@@ -10,8 +10,11 @@ source:
   sha256: 2a136451a7932d80b7d197b10441e26e39428d67b1443ec43bbba824705e1123
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
+  run_exports:
+    # remove symbols and may change SONAME.  Keep to minor version.
+    - {{ pin_subpackage('json-c', max_pin='x.x') }}
 
 requirements:
   build:
