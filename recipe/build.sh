@@ -2,7 +2,8 @@
 
 bash ./autogen.sh
 
-export  CFLAGS="-Wno-error $CFLAGS"
+# https://github.com/json-c/json-c/issues/406
+export CPPFLAGS="${CPPFLAGS/-DNDEBUG/}"
 
 ./configure --prefix=$PREFIX
 
