@@ -7,6 +7,6 @@ export CPPFLAGS="${CPPFLAGS/-DNDEBUG/}"
 
 ./configure --prefix=$PREFIX --host=$HOST --build=$BUILD
 
-make
-make check
+make ${VERBOSE_AT}
+make check ${VERBOSE_AT}
 make install
