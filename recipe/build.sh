@@ -5,7 +5,7 @@ bash ./autogen.sh
 # https://github.com/json-c/json-c/issues/406
 export CPPFLAGS="${CPPFLAGS/-DNDEBUG/}"
 
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --host=$HOST --build=$BUILD
 
 make
 make check
