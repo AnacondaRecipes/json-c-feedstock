@@ -22,6 +22,7 @@ requirements:
     - automake
     - {{ compiler('c') }}
     - libtool
+    - make
 
 test:
   commands:
