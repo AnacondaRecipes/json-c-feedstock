@@ -23,6 +23,8 @@ requirements:
     - {{ compiler('c') }}
     - libtool
     - make
+    - gnuconfig  # [unix]
+    - cmake >=2.8
 
 test:
   commands:
