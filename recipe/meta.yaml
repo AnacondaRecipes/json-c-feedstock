@@ -28,9 +28,9 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
-    - test -f ${PREFIX}/lib/libjson-c.so  # [linux]
-    - test -f ${PREFIX}/lib/libjson-c.dylib  # [osx]
+    - test -f ${PREFIX}/lib64/libjson-c.a  # [unix]
+    - test -f ${PREFIX}/lib64/libjson-c.so  # [linux]
+    - test -f ${PREFIX}/lib64/libjson-c.dylib  # [osx]
     - conda inspect linkages -p ${PREFIX} json-c  # [linux]
 
 about:
