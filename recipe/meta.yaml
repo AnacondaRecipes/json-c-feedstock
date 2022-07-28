@@ -1,4 +1,4 @@
-{% set version = "0.13.1" %}
+{% set version = "0.16" %}
 
 package:
   name: json-c
@@ -7,35 +7,40 @@ package:
 source:
   fn: json-c-{{ version }}.tar.gz
   url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
-  sha256: b87e608d4d3f7bfdd36ef78d56d53c74e66ab278d318b71e6002a369d36f4873
+  sha256: 8e45ac8f96ec7791eaf3bb7ee50e9c2100bbbc87b8d0f1d030c5ba8a0288d96b
 
 build:
   number: 0
-  skip: True  # [win]
   run_exports:
     # remove symbols and may change SONAME.  Keep to minor version.
     - {{ pin_subpackage('json-c', max_pin='x.x') }}
 
 requirements:
   build:
-    - autoconf
-    - automake
+    - gnuconfig           # [unix]
     - {{ compiler('c') }}
-    - libtool
-    - make
-
+    - cmake >=2.8
+    - ninja-base
 test:
   commands:
     - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
     - test -f ${PREFIX}/lib/libjson-c.so  # [linux]
     - test -f ${PREFIX}/lib/libjson-c.dylib  # [osx]
-    - conda inspect linkages -p ${PREFIX} json-c  # [linux]
+    - test -f ${PREFIX}/include/json-c/json.h  # [unix]
+    - if not exist %LIBRARY_BIN%/json-c.dll exit 1  # [win]
+    - if not exist %LIBRARY_LIB%/json-c.lib exit 1  # [win]
+    - if not exist %LIBRARY_INC%/json-c/json.h exit 1  # [win]
 
 about:
   home: https://github.com/json-c/json-c/wiki
   license: MIT
+  license_family: MIT
   license_file: COPYING
-  summary: 'A JSON implementation in C.'
+  summary: A JSON implementation in C.
+  description: |
+    A JSON implementation in C.
+  dev_url: https://github.com/json-c/json-c
+  doc_url: https://json-c.github.io/json-c/
 
 extra:
   recipe-maintainers:
