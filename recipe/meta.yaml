@@ -19,7 +19,8 @@ requirements:
   build:
     - gnuconfig           # [unix]
     - {{ compiler('c') }}
-    - cmake >=2.8
+    - {{ stdlib('c') }}
+    - cmake >=3.9
     - ninja-base
 test:
   commands:
