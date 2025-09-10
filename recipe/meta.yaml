@@ -1,4 +1,4 @@
-{% set version = "0.16" %}
+{% set version = "0.18" %}
 
 package:
   name: json-c
@@ -7,7 +7,7 @@ package:
 source:
   fn: json-c-{{ version }}.tar.gz
   url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
-  sha256: 8e45ac8f96ec7791eaf3bb7ee50e9c2100bbbc87b8d0f1d030c5ba8a0288d96b
+  sha256: 876ab046479166b869afc6896d288183bbc0e5843f141200c677b3e8dfb11724
 
 build:
   number: 0
