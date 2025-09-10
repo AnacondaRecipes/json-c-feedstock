@@ -14,8 +14,6 @@ build:
   run_exports:
     # remove symbols and may change SONAME.  Keep to minor version.
     - {{ pin_subpackage('json-c', max_pin='x.x') }}
-  missing_dso_whitelist:  # [s390x]
-    - $RPATH/ld64.so.1    # [s390x]
 
 requirements:
   build:
