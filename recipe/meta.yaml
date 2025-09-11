@@ -1,27 +1,26 @@
-{% set version = "0.16" %}
+{% set name = "json-c" %}
+{% set version = "0.18" %}
 
 package:
-  name: json-c
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: json-c-{{ version }}.tar.gz
-  url: https://s3.amazonaws.com/json-c_releases/releases/json-c-{{ version }}.tar.gz
-  sha256: 8e45ac8f96ec7791eaf3bb7ee50e9c2100bbbc87b8d0f1d030c5ba8a0288d96b
+  url: https://s3.amazonaws.com/{{ name }}_releases/releases/{{ name }}-{{ version }}.tar.gz
+  sha256: 876ab046479166b869afc6896d288183bbc0e5843f141200c677b3e8dfb11724
 
 build:
   number: 0
   run_exports:
     # remove symbols and may change SONAME.  Keep to minor version.
     - {{ pin_subpackage('json-c', max_pin='x.x') }}
-  missing_dso_whitelist:  # [s390x]
-    - $RPATH/ld64.so.1    # [s390x]
 
 requirements:
   build:
     - gnuconfig           # [unix]
     - {{ compiler('c') }}
-    - cmake >=2.8
+    - {{ stdlib('c') }}
+    - cmake >=3.9
     - ninja-base
 test:
   commands:
