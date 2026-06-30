@@ -1,5 +1,5 @@
 {% set name = "json-c" %}
-{% set version = "0.18" %}
+{% set version = "0.19" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://s3.amazonaws.com/{{ name }}_releases/releases/{{ name }}-{{ version }}.tar.gz
-  sha256: 876ab046479166b869afc6896d288183bbc0e5843f141200c677b3e8dfb11724
+  sha256: 37ad0249902e301bd9052bf712e511fcc6acff4ecaad4b5900aad9ce564e26de
 
 build:
   number: 0
@@ -17,11 +17,12 @@ build:
 
 requirements:
   build:
-    - gnuconfig           # [unix]
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - cmake >=3.9
     - ninja-base
+
 test:
   commands:
     - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
