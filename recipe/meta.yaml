@@ -17,11 +17,12 @@ build:
 
 requirements:
   build:
-    - gnuconfig           # [unix]
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - cmake >=3.9
     - ninja-base
+
 test:
   commands:
     - test -f ${PREFIX}/lib/libjson-c.a  # [unix]
